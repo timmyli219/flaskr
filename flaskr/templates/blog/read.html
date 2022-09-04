@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Read "{{ post['title'] }}"{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <h1>{{ post['title']}}</h1>
+    <p class="body">{{ post['body'] }}</p>
+    <form method="post" action="{{ url_for('blog.comment', id=post['id']) }}">
+        <label for="body">Body</label>
+        <textarea name="comment_body"></textarea>
+        <input type="submit" value="Save">
+    </form>
+    {% for comment in comments %}
+      {% if comment["post_id"]==post["id"] %}
+        <article class="post">
+          <header>
+            <div>
+
+              <div class="about">by {{ comment['username'] }} on {{ comment['comment_time'] }}</div>
+            </div>
+
+          </header>
+            <p class="body">{{ comment['comment'] }}</p>
+
+
+        </article>
+      {% endif %}
+    {% if not loop.last %}
+      <hr>
+    {% endif %}
+  {% endfor %}
+{% endblock %}

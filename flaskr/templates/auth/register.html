@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Welcome to the register screen for new users{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <div >
+      <form method="post">
+        <label for="username" style="margin: auto">Username</label>
+        <input name="username" id="username" placeholder="Username" required style="width: 50%; margin: auto">
+        <label for="password" style="margin: auto; margin-top: 30%">Password</label>
+        <input type="password" name="password" id="password" placeholder="Password" required style="width: 50%; margin: auto;">
+          <button type="submit" ><div >Register</div></button>
+
+          </form>
+  </div>
+
+{% endblock %}
